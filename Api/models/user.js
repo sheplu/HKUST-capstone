@@ -1,13 +1,5 @@
 var Schema = mongoose.Schema;
 
-var externalSchema = new Schema({
-  mail: {
-      type: String,
-      required: true,
-      unique: true
-  }
-});
-
 var userSchema = new Schema({
     identifiant: {
         type: String,
