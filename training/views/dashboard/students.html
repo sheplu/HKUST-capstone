@@ -1,0 +1,39 @@
+{% extends '../layout_dashboard.html' %}
+
+{% block content %}
+	<h1 class="page-header">Students</h1>
+	<div class="row">
+		{% if req.session.admin %}
+			<a href="/dashboard/students/add" class="btn btn-primary btn-lg pull-right"><i class="glyphicon glyphicon-plus"></i> Add student</a>
+		{% endif %}
+	</div>
+	<div class="table-responsive">
+        <table class="table table-striped">
+          	<thead>
+                <tr>
+                  <th>#</th>
+                  <th>Lastname</th>
+                  <th>Firstname</th>
+                  <th>Email</th>
+                  <th>Classroom</th>
+                  <th><i class="glyphicon glyphicon-pencil"></i></th>
+                  <th><i class="glyphicon glyphicon-trash"></i></th>
+                </tr>
+          	</thead>
+
+          	<tbody>
+	          	{% for student in students %}
+	          		<tr>
+		          		<td>{{ student.identifiant }}</td>
+	            		<td>{{ student.firstname }}</td>
+	            		<td>{{ student.lastname }}</td>
+	            		<td>{{ student.email }}</td>
+	            		<td>{{ student.classroom.name }}</td>
+	            		<td><button class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i> Edit</button></td>
+	            		<td><button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Remove</button></td>
+            		</tr>
+	          	{% endfor %}
+          	</tbody>
+        </table>
+  	</div>
+{% endblock %}

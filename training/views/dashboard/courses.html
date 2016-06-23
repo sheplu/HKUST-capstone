@@ -1,0 +1,35 @@
+{% extends '../layout_dashboard.html' %}
+
+{% block content %}
+	<h1 class="page-header">Courses</h1>
+	<div class="row">
+		<a href="/dashboard/courses/add" class="btn btn-primary btn-lg pull-right"><i class="glyphicon glyphicon-plus"></i> Add course</a>
+	</div>
+	<div class="table-responsive">
+        <table class="table table-striped">
+          	<thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Classroom</th>
+                  <th>Teacher</th>
+                  <th><i class="glyphicon glyphicon-pencil"></i></th>
+                  <th><i class="glyphicon glyphicon-trash"></i></th>
+                </tr>
+          	</thead>
+          	<tbody>
+
+              {% for course in courses %}
+              <tr>
+                  <td>{{ course.identifiant }}</td>
+                  <td>{{ course.name }}</td>
+                  <td>{{ course.classroom.name }}</td>
+                  <td>{{ course.teacher.firstname }} {{ course.teacher.lastname }}</td>
+                  <td><button class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i> Edit</button></td>
+                  <td><button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Remove</button></td>
+                </tr>
+              {% endfor %}
+          	</tbody>
+        </table>
+  	</div>
+{% endblock %}

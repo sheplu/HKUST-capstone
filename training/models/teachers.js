@@ -1,18 +1,22 @@
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var sportSchema = new Schema({
-    name: {
+var teacherSchema = new Schema({
+    identifiant: {
         type: String,
         required: true
     },
-    description: {
+    firstname: {
         type: String,
         required: true
     },
-    image: {
+    lastname: {
         type: String,
-        required: true,
-        unique: true
+        required: true
+    },
+    mail: {
+      type: String,
+      required: true
     },
     created_at: {
       type: Date,
@@ -23,16 +27,11 @@ var sportSchema = new Schema({
       type: Date,
       required: true,
       default: Date.now
-    },
-    isValid: {
-      type: Boolean,
-      required: true,
-      default: true
     }
   }, {
     timestamps: true
 });
 
-var Sports = mongoose.model('Sport', sportSchema);
+var Teachers = mongoose.model('Teachers', teacherSchema);
 
-module.exports = Sports;
+module.exports = Teachers;

@@ -1,18 +1,18 @@
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var sportSchema = new Schema({
+var roomsSchema = new Schema({
+    identifiant: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
     },
-    description: {
-        type: String,
+    capacity: {
+        type: Number,
         required: true
-    },
-    image: {
-        type: String,
-        required: true,
-        unique: true
     },
     created_at: {
       type: Date,
@@ -23,16 +23,11 @@ var sportSchema = new Schema({
       type: Date,
       required: true,
       default: Date.now
-    },
-    isValid: {
-      type: Boolean,
-      required: true,
-      default: true
     }
   }, {
     timestamps: true
 });
 
-var Sports = mongoose.model('Sport', sportSchema);
+var Rooms = mongoose.model('Rooms', roomsSchema);
 
-module.exports = Sports;
+module.exports = Rooms;
